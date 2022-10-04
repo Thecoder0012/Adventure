@@ -1,8 +1,8 @@
-package Customer.Service;
+package com.example.adventure.Customer.Service;
 
 
-import Customer.Model.Customer;
-import Customer.Repository.CustomerRepo;
+import com.example.adventure.Customer.Model.Customer;
+import com.example.adventure.Customer.Repository.CustomerRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class CustomerService {
 
     public Customer findById(Long id){
         return customerRepo.findById(id).orElseThrow(()->
-                new RuntimeException("%s %d not found!".formatted( "Customer", id)));
+                new RuntimeException("%s %d not found!".formatted("com/example/adventure/Customer", id)));
     }
 
     public Optional<Customer> update(Long id, Customer customer, boolean partial){

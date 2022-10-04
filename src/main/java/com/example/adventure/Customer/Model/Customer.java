@@ -1,10 +1,8 @@
-package Customer.Model;
+package com.example.adventure.Customer.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

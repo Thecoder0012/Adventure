@@ -1,15 +1,14 @@
-package Customer.Controller;
+package com.example.adventure.Customer.Controller;
 
 
-import Customer.Model.Customer;
-import Customer.Service.CustomerService;
+import com.example.adventure.Customer.Model.Customer;
+import com.example.adventure.Customer.Service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
