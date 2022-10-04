@@ -1,4 +1,4 @@
-package com.example.adventure.activity;
+package com.example.adventure.Activity.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
