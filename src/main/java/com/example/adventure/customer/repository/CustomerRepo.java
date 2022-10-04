@@ -1,4 +1,4 @@
-package com.example.adventure.customer.repository;
+package com.example.adventure.customer.repository; //
 
 import com.example.adventure.customer.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
