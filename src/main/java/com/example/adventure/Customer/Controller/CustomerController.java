@@ -41,8 +41,7 @@ public class CustomerController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Customer> delete(@PathVariable("id") Long id){
-        Customer delete = service.findById(id);
-        return ResponseEntity.ok().body(delete);
+        return ResponseEntity.ok().body(service.delete(id));
     }
 
 
