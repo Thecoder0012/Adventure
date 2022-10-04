@@ -1,4 +1,4 @@
-package com.example.adventure.Activity.Controller;
+package com.example.adventure.activity.controller;
 
 import com.example.adventure.Activity.Model.Activity;
 import com.example.adventure.Activity.Service.ActivityService;

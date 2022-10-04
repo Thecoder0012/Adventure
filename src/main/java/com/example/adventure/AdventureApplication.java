@@ -2,8 +2,8 @@ package com.example.adventure;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import com.example.adventure.Customer.Model.Customer;
-import com.example.adventure.Customer.Repository.CustomerRepo;
+import com.example.adventure.customer.model.Customer;
+import com.example.adventure.customer.repository.CustomerRepo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

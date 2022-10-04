@@ -1,8 +1,8 @@
-package com.example.adventure.Customer.Controller;
+package com.example.adventure.customer.controller;
 
 
-import com.example.adventure.Customer.Model.Customer;
-import com.example.adventure.Customer.Service.CustomerService;
+import com.example.adventure.customer.model.Customer;
+import com.example.adventure.customer.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -43,7 +43,6 @@ public class CustomerController {
     public ResponseEntity<Customer> delete(@PathVariable("id") Long id){
         return ResponseEntity.ok().body(service.delete(id));
     }
-
 
 }
 

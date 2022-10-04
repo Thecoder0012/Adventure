@@ -1,4 +1,4 @@
-package com.example.adventure.Customer.Model;
+package com.example.adventure.customer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
