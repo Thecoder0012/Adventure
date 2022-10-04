@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,14 +27,16 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<Customer> create(Customer customer){
+    public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer){
         service.add(customer);
         return ResponseEntity.ok().body(customer);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Customer> patch(@PathVariable("id") Long id, Customer customer){
-        return ResponseEntity.ok().body(customer.updateFrom(customer, true));
+    public ResponseEntity<Customer> patch(@PathVariable("id") Long id,
+                                          @Valid @RequestBody  Customer customer){
+        return ResponseEntity.ok().body(service.update(id, customer, true).orElseThrow(()->
+                new RuntimeException("Not found")));
     }
 
     @DeleteMapping("/{id}")

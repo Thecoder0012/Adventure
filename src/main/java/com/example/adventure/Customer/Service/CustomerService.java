@@ -30,7 +30,7 @@ public class CustomerService {
 
     public Optional<Customer> update(Long id, Customer customer, boolean partial){
         return customerRepo.findById(id).map(oldItem -> {
-            return customerRepo.save(oldItem.updateFrom(customer, partial));});
+            return customerRepo.save(customer);});
     }
 
     public Customer delete(Long id){
