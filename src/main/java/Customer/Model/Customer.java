@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,4 +35,13 @@ public class Customer {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+
+    public Customer updateFrom(Customer customer, boolean partial){
+        if(!partial || customer.firstName!=null) {this.firstName = customer.firstName;}
+        if (!partial || customer.lastName!=null) {this.lastName = customer.lastName;}
+        if (!partial || customer.email!=null) {this.email = customer.email;}
+        if (!partial || customer.phoneNumber!=null) {this.phoneNumber = customer.phoneNumber;}
+        return this;
+    }
+
 }
