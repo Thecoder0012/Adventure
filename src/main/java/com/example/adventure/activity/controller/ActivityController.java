@@ -22,6 +22,11 @@ public class ActivityController {
 
     }
 
+    @PostMapping("/addActivity")
+public Activity addActivity(@RequestBody Activity activity){
+        return service.saveActivity(activity);
+    }
+
     @GetMapping("/activityById/{id}")
     public Activity getActivityById(@PathVariable Long id) {
         return service.getActivityById(id);
@@ -36,6 +41,13 @@ public Activity getActivityByName(@PathVariable String name){
     public String deleteProduct(@PathVariable Long id){
         return service.deleteActivity(id);
     }
+
+    @PutMapping("/updateActivity")
+    public Activity UpdateActivity(@RequestBody Activity activity) {
+        return service.updateActivity(activity);
+    }
+
+
 
 
 }

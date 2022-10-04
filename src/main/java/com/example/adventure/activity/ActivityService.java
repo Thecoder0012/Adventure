@@ -19,6 +19,10 @@ public class ActivityService {
 
     }
 
+    public Activity saveActivity(Activity activity){
+        return repository.save(activity);
+    }
+
     public Activity getActivityById(Long id){
         return repository.findById(id).orElse(null);
     }
@@ -30,6 +34,15 @@ public class ActivityService {
     public String deleteActivity(Long id){
         repository.deleteById(id);
         return "Activity removed" + id;
+    }
+
+    public Activity updateActivity(Activity activity){
+        Activity existingActivity=repository.findById(activity.getId()).orElse(null);
+        existingActivity.setHourPrice(activity.getHourPrice());
+        existingActivity.setName(activity.getName());
+        existingActivity.setMinAge(activity.getMinAge());
+        existingActivity.setDescription(activity.getDescription());
+        return repository.save(existingActivity);
     }
 
 

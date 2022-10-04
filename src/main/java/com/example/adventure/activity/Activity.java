@@ -36,4 +36,5 @@ public class Activity {
         this.minAge = minAge;
         this.description = description;
     }
+
 }
