@@ -1,6 +1,6 @@
-package com.example.adventure.Activity.Repository;
+package com.example.adventure.activity.repository;
 
-import com.example.adventure.Activity.Model.Activity;
+import com.example.adventure.activity.model.Activity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {

@@ -1,7 +1,7 @@
-package com.example.adventure.Activity.Service;
+package com.example.adventure.activity.service;
 
-import com.example.adventure.Activity.Model.Activity;
-import com.example.adventure.Activity.Repository.ActivityRepository;
+import com.example.adventure.activity.model.Activity;
+import com.example.adventure.activity.repository.ActivityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
