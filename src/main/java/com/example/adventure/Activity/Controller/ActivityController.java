@@ -1,8 +1,9 @@
-package com.example.adventure.Activity.Controller;
+package com.example.adventure.activity.controller;
 
-import com.example.adventure.Activity.Model.Activity;
-import com.example.adventure.Activity.Service.ActivityService;
+import com.example.adventure.activity.Activity;
+import com.example.adventure.activity.ActivityService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
