@@ -2,8 +2,11 @@ package com.example.adventure;
 
 import com.example.adventure.activity.model.Activity;
 import com.example.adventure.activity.repository.ActivityRepository;
+import com.example.adventure.activity.service.ActivityService;
 import com.example.adventure.booking.model.Booking;
 import com.example.adventure.booking.repository.BookingRepository;
+import com.example.adventure.booking.service.BookingService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import com.example.adventure.customer.model.Customer;
@@ -12,13 +15,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Slf4j
+@AllArgsConstructor
 @SpringBootApplication
 public class AdventureApplication {
+
+    private final BookingService bookingService;
 
     public static void main(String[] args) {
         SpringApplication.run(AdventureApplication.class, args);
@@ -45,20 +53,6 @@ public class AdventureApplication {
             activities.add(new Activity(10.0, "Test4", 15, "DescTEST3"));
             activityRepository.saveAll(activities);
             log.info("Activities added");
-
-
-
-
-           final List<Booking> bookings = new ArrayList<>();
-            bookings.add(new Booking("Booking 1"));
-            bookings.add(new Booking("Booking 2"));
-            bookings.add(new Booking("Booking 3"));
-            bookings.add(new Booking("Booking 4"));
-            bookings.get(0).setActivity(activities.get(0));
-            bookings.get(0).setCustomer(employees.get(2));
-            bookings.get(1).setCustomer(employees.get(2));
-            bookingRepository.saveAll(bookings);
-            log.info("Bookings added");
 
 
             log.info("Data import done.");

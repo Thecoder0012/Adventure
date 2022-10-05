@@ -32,7 +32,9 @@ public class BookingService {
 
     public Booking updateBooking(Long id, Booking booking){
         Booking bookingRequest = repository.findById(id).orElse(null);
-        bookingRequest.setName(booking.getName());
+        bookingRequest.setLocalDate(booking.getLocalDate());
+        bookingRequest.setTimeStart(booking.getTimeStart());
+        bookingRequest.setTimeEnd(booking.getTimeEnd());
         bookingRequest.setActivity(booking.getActivity());
         bookingRequest.setCustomer(booking.getCustomer());
         return repository.save(bookingRequest);
