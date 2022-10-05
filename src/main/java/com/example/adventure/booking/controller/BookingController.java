@@ -1,5 +1,7 @@
-package com.example.adventure.booking;
+package com.example.adventure.booking.controller;
 
+import com.example.adventure.booking.service.BookingService;
+import com.example.adventure.booking.model.Booking;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

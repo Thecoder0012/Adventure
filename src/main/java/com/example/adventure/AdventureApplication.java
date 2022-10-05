@@ -2,8 +2,8 @@ package com.example.adventure;
 
 import com.example.adventure.activity.model.Activity;
 import com.example.adventure.activity.repository.ActivityRepository;
-import com.example.adventure.booking.Booking;
-import com.example.adventure.booking.BookingRepository;
+import com.example.adventure.booking.model.Booking;
+import com.example.adventure.booking.repository.BookingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import com.example.adventure.customer.model.Customer;

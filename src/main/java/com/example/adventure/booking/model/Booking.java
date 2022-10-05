@@ -1,4 +1,4 @@
-package com.example.adventure.booking;
+package com.example.adventure.booking.model;
 
 import com.example.adventure.activity.model.Activity;
 import com.example.adventure.customer.model.Customer;

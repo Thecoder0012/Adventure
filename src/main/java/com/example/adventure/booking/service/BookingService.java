@@ -1,5 +1,7 @@
-package com.example.adventure.booking;
+package com.example.adventure.booking.service;
 
+import com.example.adventure.booking.model.Booking;
+import com.example.adventure.booking.repository.BookingRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
