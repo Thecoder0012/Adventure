@@ -16,33 +16,33 @@ public class ActivityController {
 
     private final ActivityService service;
 
-    @GetMapping("/getAllActivities")
+    @GetMapping
     public List<Activity> getAll() {
         return service.getAll();
 
     }
 
-    @PostMapping("/addActivity")
-public Activity addActivity(@RequestBody Activity activity){
+    @PostMapping
+    public Activity addActivity(@RequestBody Activity activity){
         return service.saveActivity(activity);
     }
 
-    @GetMapping("/activityById/{id}")
+    @GetMapping("/{id}")
     public Activity getActivityById(@PathVariable Long id) {
         return service.getActivityById(id);
     }
 
-    @GetMapping("/activityByName/{name}")
-public Activity getActivityByName(@PathVariable String name){
+    @GetMapping("/name/{name}")
+    public Activity getActivityByName(@PathVariable String name){
         return service.getActivityByName(name);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public String deleteProduct(@PathVariable Long id){
         return service.deleteActivity(id);
     }
 
-    @PutMapping("/updateActivity")
+    @PutMapping("/update")
     public Activity UpdateActivity(@RequestBody Activity activity) {
         return service.updateActivity(activity);
     }

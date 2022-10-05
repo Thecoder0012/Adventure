@@ -24,7 +24,8 @@ public class ActivityService {
     }
 
     public Activity getActivityById(Long id){
-        return repository.findById(id).orElse(null);
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Activity %d not found.".formatted(id)));
     }
 
     public Activity getActivityByName(String name){
