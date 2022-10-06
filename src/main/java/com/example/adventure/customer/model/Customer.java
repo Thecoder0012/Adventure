@@ -1,13 +1,13 @@
 package com.example.adventure.customer.model;//
 
+import com.example.adventure.booking.model.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Data
@@ -26,6 +26,15 @@ public class Customer {
     private String email;
 
     private String phoneNumber;
+
+    @ManyToMany(cascade = {
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "customer_booking",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "booking_id")
+    )
+    private List<Booking> bookings = new ArrayList<>();
 
     public Customer(String firstName, String lastName, String email, String phoneNumber) {
         this.firstName = firstName;

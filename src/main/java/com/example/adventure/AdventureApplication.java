@@ -62,7 +62,18 @@ public class AdventureApplication {
 
             Activity activityBooking = activities.get(0);
             activityBooking.getBookings().add(bookings.get(0));
+
             activityRepository.save(activityBooking);
+
+
+            Customer customerBooking = employees.get(0);
+            customerBooking.getBookings().add(bookings.get(0));
+
+            employeeRepository.save(customerBooking);
+
+
+
+
 
 
             log.info("Data import done.");
