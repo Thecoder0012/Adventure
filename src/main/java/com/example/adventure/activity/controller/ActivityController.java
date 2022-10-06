@@ -10,7 +10,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/activity")
+@CrossOrigin
+@RequestMapping("/api/v1/activity")
 public class ActivityController {
 
 

@@ -9,7 +9,8 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/booking")
+@CrossOrigin
+@RequestMapping("/api/v1/booking")
 public class BookingController {
 
     private final BookingService service;
