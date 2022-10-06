@@ -5,6 +5,7 @@ import com.example.adventure.activity.repository.ActivityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -14,8 +15,11 @@ public class ActivityService {
 
  private final ActivityRepository repository;
 
-    public List<Activity> getAll() {
-        return repository.findAll();
+    public Iterable<Activity> getAll() {
+        List<Activity> list = new ArrayList<>();
+        Iterable<Activity> items = repository.findAll();
+        items.forEach(list::add);
+        return list;
 
     }
 
