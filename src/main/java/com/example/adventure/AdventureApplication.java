@@ -55,6 +55,16 @@ public class AdventureApplication {
             log.info("Activities added");
 
 
+            List<Booking> bookings = new ArrayList<>();
+            bookings.add(new Booking(LocalDate.of(2020, 5, 5), LocalTime.of(12,0), LocalTime.of(16, 0),
+                    activities.get(0), employees.get(0)));
+            bookingRepository.saveAll(bookings);
+
+            Activity activityBooking = activities.get(0);
+            activityBooking.getBookings().add(bookings.get(0));
+            activityRepository.save(activityBooking);
+
+
             log.info("Data import done.");
 
 
