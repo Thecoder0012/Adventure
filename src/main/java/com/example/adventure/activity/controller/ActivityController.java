@@ -27,7 +27,7 @@ public class ActivityController {
 
     @GetMapping
     public ResponseEntity<List<ActivityDto>> findAll() {
-        return ResponseEntity.ok().body(DtoFactory.fromActivitiesNew(service.getAll()));
+        return ResponseEntity.ok().body(DtoFactory.fromActivities(service.getAll()));
 
     }
 
