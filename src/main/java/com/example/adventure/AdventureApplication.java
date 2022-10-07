@@ -46,10 +46,10 @@ public class AdventureApplication {
 
             log.info("Starting convertion");
             List<Activity> activities = new ArrayList<>();
-            activities.add(new Activity(20.0, "Test1", 12, "DescTEST"));
-            activities.add(new Activity(40.0, "Test2", 13, "DescTEST1"));
-            activities.add(new Activity(30.0, "Test3", 14, "DescTEST2"));
-            activities.add(new Activity(10.0, "Test4", 15, "DescTEST3"));
+            activities.add(new Activity(20.0, "Gocart", 12, "DescTEST"));
+            activities.add(new Activity(40.0, "Minigolf", 13, "DescTEST1"));
+            activities.add(new Activity(30.0, "Paintball", 14, "DescTEST2"));
+            activities.add(new Activity(10.0, "Sumo-Wrestling", 15, "DescTEST3"));
             activityRepository.saveAll(activities);
             log.info("Activities added");
 

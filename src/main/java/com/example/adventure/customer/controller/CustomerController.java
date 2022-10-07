@@ -3,6 +3,10 @@ package com.example.adventure.customer.controller;//
 
 import com.example.adventure.customer.model.Customer;
 import com.example.adventure.customer.service.CustomerService;
+import com.example.adventure.dtotest.ActivityDto;
+import com.example.adventure.dtotest.BookingDto;
+import com.example.adventure.dtotest.CustomerDto;
+import com.example.adventure.dtotest.DtoFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,12 +24,11 @@ public class CustomerController {
 
     private final CustomerService service;
 
-    @GetMapping
-    public ResponseEntity<List<Customer>>fetchAll(){
-        List<Customer> list = service.fetchAll();
-
-        return new ResponseEntity<List<Customer>>(list, new HttpHeaders(), HttpStatus.OK);
+    @GetMapping("/get")
+    public ResponseEntity<List<CustomerDto>> findAll() {
+        return ResponseEntity.ok().body(DtoFactory.fromCustomer(service.fetchAll()));
     }
+
 
     @PostMapping
     public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer){
