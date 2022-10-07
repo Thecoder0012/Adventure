@@ -7,10 +7,15 @@ import com.example.adventure.dtotest.ActivityDto;
 import com.example.adventure.dtotest.DtoFactory;
 import lombok.AllArgsConstructor;
 import org.apache.coyote.Response;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
@@ -18,13 +23,21 @@ import java.util.List;
 @RequestMapping("/api/v1/activity")
 public class ActivityController {
 
+    private ModelMapper modelMapper;
 
     private final ActivityService service;
 
     @GetMapping
-    ResponseEntity<List<ActivityDto>> findAll() {
-        List<Activity> all = (List<Activity>) service.getAll();
-        return ResponseEntity.ok().body(DtoFactory.fromActivities(all));
+    public ResponseEntity<List<ActivityDto>> findAll() {
+        List<Activity> activities = service.getAll();
+        List<ActivityDto> activityDtos = new ArrayList<>();
+        for (Activity activity : activities){
+            ActivityDto activityDtoTest = new ActivityDto();
+            BeanUtils.copyProperties(activity, activityDtoTest);
+            activityDtos.add((activityDtoTest));
+        }
+
+        return ResponseEntity.ok().body(activityDtos);
     }
 
     @PostMapping

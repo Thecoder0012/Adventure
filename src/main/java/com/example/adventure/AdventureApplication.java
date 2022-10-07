@@ -8,6 +8,7 @@ import com.example.adventure.booking.repository.BookingRepository;
 import com.example.adventure.booking.service.BookingService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import com.example.adventure.customer.model.Customer;
 import com.example.adventure.customer.repository.CustomerRepo;
@@ -27,6 +28,11 @@ import java.util.List;
 public class AdventureApplication {
 
     private final BookingService bookingService;
+
+    @Bean
+    public ModelMapper modelMapper(){
+        return new ModelMapper();
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(AdventureApplication.class, args);

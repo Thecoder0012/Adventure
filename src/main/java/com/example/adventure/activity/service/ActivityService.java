@@ -15,12 +15,8 @@ public class ActivityService {
 
  private final ActivityRepository repository;
 
-    public Iterable<Activity> getAll() {
-        List<Activity> list = new ArrayList<>();
-        Iterable<Activity> items = repository.findAll();
-        items.forEach(list::add);
-        return list;
-
+    public List<Activity> getAll() {
+        return repository.findAll();
     }
 
     public Activity saveActivity(Activity activity){
