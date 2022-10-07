@@ -2,6 +2,7 @@ package com.example.adventure.booking.controller;
 
 import com.example.adventure.booking.service.BookingService;
 import com.example.adventure.booking.model.Booking;
+import com.example.adventure.dtotest.ActivityDto;
 import com.example.adventure.dtotest.BookingDto;
 import com.example.adventure.dtotest.DtoFactory;
 import lombok.AllArgsConstructor;
@@ -29,14 +30,16 @@ public class BookingController {
     }
 
     @GetMapping("/{id}")
-    public Booking getBookingById(@PathVariable Long id) {
-        return service.getBookingById(id);
+    public ResponseEntity<BookingDto> getActivityById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(DtoFactory.fromBooking(service.getBookingById(id)));
     }
 
     @DeleteMapping("/{id}")
     public String deleteBooking(@PathVariable Long id){
         return service.deleteBooking(id);
     }
+
+
     @PutMapping("/update/{id}")
     public Booking updateBooking(@PathVariable("id") Long id, @RequestBody Booking booking){
         return service.updateBooking(id, booking);

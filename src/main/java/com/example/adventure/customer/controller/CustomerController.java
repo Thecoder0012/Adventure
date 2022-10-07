@@ -29,6 +29,11 @@ public class CustomerController {
         return ResponseEntity.ok().body(DtoFactory.fromCustomer(service.fetchAll()));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerDto> getActivityById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(DtoFactory.fromCustomer(service.getCustomerById(id)));
+    }
+
 
     @PostMapping
     public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer){

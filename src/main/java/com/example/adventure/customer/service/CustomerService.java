@@ -32,6 +32,10 @@ public class CustomerService {
                 new RuntimeException("%s %d not found!".formatted("com/example/adventure/customer", id)));
     }
 
+    public Customer getCustomerById(Long id){
+        return customerRepo.findById(id).orElse(null);
+    }
+
     public Optional<Customer> update(Long id, Customer customer, boolean partial){
         return customerRepo.findById(id).map(oldItem -> {
             return customerRepo.save(customer);});
