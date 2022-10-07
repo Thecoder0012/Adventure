@@ -28,6 +28,8 @@ public class DtoFactory {
                 .collect(Collectors.toList());
     }
 
+
+    // For booking
     public static BookingDto fromBooking(Booking booking) {
         BookingDto dto = new BookingDto();
         dto.setId(booking.getId());
@@ -41,6 +43,22 @@ public class DtoFactory {
 
     public static List<BookingDto> fromBookings(List<Booking> bookings) {
         return bookings.stream().map(obj -> fromBooking(obj))
+                .collect(Collectors.toList());
+    }
+
+    // For Customer
+    public static CustomerDto fromCustomer(Customer customer){
+        CustomerDto dto = new CustomerDto();
+        dto.setId(customer.getId());
+        dto.setFirstName(customer.getFirstName());
+        dto.setLastName(customer.getLastName());
+        dto.setEmail(customer.getEmail());
+        dto.setPhoneNumber(customer.getPhoneNumber());
+        return dto;
+    }
+
+    public static List<CustomerDto> fromCustomer(List<Customer> customers){
+        return customers.stream().map(obj -> fromCustomer(obj))
                 .collect(Collectors.toList());
     }
 
