@@ -40,6 +40,7 @@ public class Activity {
             joinColumns = @JoinColumn(name = "activity_id"),
             inverseJoinColumns = @JoinColumn(name = "booking_id")
     )
+
     private List<Booking> bookings = new ArrayList<>();
 
 

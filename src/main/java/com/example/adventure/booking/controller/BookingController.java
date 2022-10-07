@@ -19,12 +19,11 @@ public class BookingController {
 
     private final BookingService service;
 
-    @GetMapping
+    @GetMapping("/get-all")
     public ResponseEntity<List<BookingDto>> getAll(){
         return ResponseEntity.ok().body(DtoFactory.fromBookings(service.getAll()));
     }
-
-    @PostMapping
+    @PostMapping("/create-new")
     public Booking addBooking(@RequestBody Booking booking){
         return service.saveBooking(booking);
     }

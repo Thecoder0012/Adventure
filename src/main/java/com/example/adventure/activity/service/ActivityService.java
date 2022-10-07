@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -32,9 +33,13 @@ public class ActivityService {
         return repository.findByName(name);
     }
 
-    public String deleteActivity(Long id){
+    public Optional<Activity> find(Long id){
+        return repository.findById(id);
+    }
+
+    public Activity deleteActivity(Long id){
         repository.deleteById(id);
-        return "Activity removed" + id;
+        return null;
     }
 
     public Activity updateActivity(Activity activity){
