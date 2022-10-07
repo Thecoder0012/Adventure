@@ -15,17 +15,6 @@ public class DtoFactory {
 
 
     // For Activity
-    public static List<ActivityDto> fromActivitiesNew(List<Activity> activities) {
-        List<ActivityDto> activityDtos = new ArrayList<>();
-        for (Activity activity : activities){
-            ActivityDto activityDtoTest = new ActivityDto();
-            BeanUtils.copyProperties(activity, activityDtoTest);
-            activityDtos.add((activityDtoTest));
-        }
-        return activityDtos;
-    }
-
-
     public static ActivityDto fromActivity(Activity activity) {
         ActivityDto dto = new ActivityDto();
         dto.setId(activity.getId());
@@ -49,8 +38,8 @@ public class DtoFactory {
         dto.setLocalDate(booking.getLocalDate());
         dto.setTimeEnd(booking.getTimeEnd());
         dto.setTimeStart(booking.getTimeStart());
-        dto.setCustomer(booking.getCustomer());
-        dto.setActivity(booking.getActivity());
+        dto.setCustomerDto(fromCustomer(booking.getCustomer()));
+        dto.setActivityDto(fromActivity(booking.getActivity()));
         return dto;
     }
 

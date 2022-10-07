@@ -16,6 +16,6 @@ public class BookingDto implements Serializable {
     private LocalDate localDate;
     private LocalTime timeStart;
     private LocalTime timeEnd;
-    private Activity activity;
-    private Customer customer;
+    private ActivityDto activityDto;
+    private CustomerDto customerDto;
 }

@@ -2,7 +2,10 @@ package com.example.adventure.booking.controller;
 
 import com.example.adventure.booking.service.BookingService;
 import com.example.adventure.booking.model.Booking;
+import com.example.adventure.dtotest.BookingDto;
+import com.example.adventure.dtotest.DtoFactory;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +19,8 @@ public class BookingController {
     private final BookingService service;
 
     @GetMapping
-    public List<Booking> getAll(){
-        return service.getAll();
+    public ResponseEntity<List<BookingDto>> getAll(){
+        return ResponseEntity.ok().body(DtoFactory.fromBookings(service.getAll()));
     }
 
     @PostMapping
