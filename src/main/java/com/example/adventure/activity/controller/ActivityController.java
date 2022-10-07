@@ -28,7 +28,6 @@ public class ActivityController {
     @GetMapping
     public ResponseEntity<List<ActivityDto>> findAll() {
         return ResponseEntity.ok().body(DtoFactory.fromActivities(service.getAll()));
-
     }
 
     @PostMapping("/test")
@@ -37,13 +36,13 @@ public class ActivityController {
     }
 
     @GetMapping("/{id}")
-    public Activity getActivityById(@PathVariable Long id) {
-        return service.getActivityById(id);
+    public ResponseEntity<ActivityDto> getActivityById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(DtoFactory.fromActivity(service.getActivityById(id)));
     }
 
     @GetMapping("/name/{name}")
-    public Activity getActivityByName(@PathVariable String name){
-        return service.getActivityByName(name);
+    public ResponseEntity<ActivityDto> getActivityByName(@PathVariable String name){
+        return ResponseEntity.ok().body(DtoFactory.fromActivity(service.getActivityByName(name)));
     }
 
     @DeleteMapping("/{id}")
