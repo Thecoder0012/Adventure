@@ -16,6 +16,5 @@ public class CustomerDto implements Serializable {
     private String lastName;
     private String email;
     private String phoneNumber;
-    @JsonManagedReference
-    private List<Booking> bookings;
+
 }
