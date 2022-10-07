@@ -27,13 +27,6 @@ import java.util.List;
 @SpringBootApplication
 public class AdventureApplication {
 
-    private final BookingService bookingService;
-
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(AdventureApplication.class, args);
     }

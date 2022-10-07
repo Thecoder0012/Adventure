@@ -23,21 +23,12 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/activity")
 public class ActivityController {
 
-    private ModelMapper modelMapper;
-
     private final ActivityService service;
 
     @GetMapping
     public ResponseEntity<List<ActivityDto>> findAll() {
-        List<Activity> activities = service.getAll();
-        List<ActivityDto> activityDtos = new ArrayList<>();
-        for (Activity activity : activities){
-            ActivityDto activityDtoTest = new ActivityDto();
-            BeanUtils.copyProperties(activity, activityDtoTest);
-            activityDtos.add((activityDtoTest));
-        }
+        return ResponseEntity.ok().body(DtoFactory.fromActivitiesNew(service.getAll()));
 
-        return ResponseEntity.ok().body(activityDtos);
     }
 
     @PostMapping

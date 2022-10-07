@@ -3,9 +3,11 @@ package com.example.adventure.dtotest;
 import com.example.adventure.activity.model.Activity;
 import com.example.adventure.booking.model.Booking;
 import com.example.adventure.customer.model.Customer;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +15,17 @@ public class DtoFactory {
 
 
     // For Activity
+    public static List<ActivityDto> fromActivitiesNew(List<Activity> activities) {
+        List<ActivityDto> activityDtos = new ArrayList<>();
+        for (Activity activity : activities){
+            ActivityDto activityDtoTest = new ActivityDto();
+            BeanUtils.copyProperties(activity, activityDtoTest);
+            activityDtos.add((activityDtoTest));
+        }
+        return activityDtos;
+    }
+
+
     public static ActivityDto fromActivity(Activity activity) {
         ActivityDto dto = new ActivityDto();
         dto.setId(activity.getId());
@@ -61,6 +74,8 @@ public class DtoFactory {
         return customers.stream().map(obj -> fromCustomer(obj))
                 .collect(Collectors.toList());
     }
+
+
 
     }
 
