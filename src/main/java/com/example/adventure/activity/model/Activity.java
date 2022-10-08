@@ -34,7 +34,7 @@ public class Activity {
 
 
     @ManyToMany(cascade = {
-            CascadeType.MERGE
+            CascadeType.ALL
     })
     @JoinTable(name = "activity_booking",
             joinColumns = @JoinColumn(name = "activity_id"),

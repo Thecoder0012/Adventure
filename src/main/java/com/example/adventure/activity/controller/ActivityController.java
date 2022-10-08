@@ -1,6 +1,5 @@
 package com.example.adventure.activity.controller;//
 
-
 import com.example.adventure.activity.service.ActivityService;
 import com.example.adventure.activity.model.Activity;
 import com.example.adventure.dtotest.ActivityDto;
@@ -37,27 +36,38 @@ public class ActivityController {
         return service.saveActivity(activity);
     }
 
-    //Virker ikke
-    @GetMapping("/{id}")
+    //Virker - IK SLET ENDPOINT
+    @GetMapping("/get-by-id/{id}")
     public ResponseEntity<ActivityDto> getActivityById(@PathVariable Long id) {
+        System.out.println("Teest");
         return ResponseEntity.ok().body(DtoFactory.fromActivity(service.getActivityById(id)));
     }
 
-    //Virker ikke
-    @GetMapping("/{name}")
+    //Virker - IK SLET ENDPOINT
+    @GetMapping("/get-by-name/{name}")
     public ResponseEntity<ActivityDto> getActivityByName(@PathVariable String name) {
         return ResponseEntity.ok().body(DtoFactory.fromActivity(service.getActivityByName(name)));
     }
 
-//Virker
-    @DeleteMapping("/{id}")
+  /*  @DeleteMapping("/delete/{id}")
     public ResponseEntity<Activity> delete(@PathVariable("id") Long id) {
         service.find(id).orElseThrow(() -> new RuntimeException("Activity not found.".formatted(id)));
 
-        Activity delete = service.deleteActivity(id);
-        return ResponseEntity.ok().body(delete); }
+        //Activity delete = service.deleteActivity(id);
+        return ResponseEntity.ok().body(delete);
+    }*/
 
-    //Ikke test
+
+    //Virker ikke fordi booking er afhængig af en activity
+    //hvis du fjerner activity 1 som en booking er afhængig af så får man fejl
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Long id){
+        System.out.println(service.deleteActivity(id) + "deleeee");
+        return service.deleteActivity(id);
+    }
+
+    //Ikke testet
     @PutMapping("/update")
     public Activity UpdateActivity(@RequestBody Activity activity) {
         return service.updateActivity(activity);
