@@ -5,7 +5,6 @@ import com.example.adventure.activity.repository.ActivityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,14 +41,24 @@ public class ActivityService {
         return null;
     }
 
-    public Activity updateActivity(Activity activity){
-        Activity existingActivity=repository.findById(activity.getId()).orElse(null);
+    public Activity updateActivity(Long id, Activity activity){
+        Activity existingActivity = repository.findById(id).orElse(null);
         existingActivity.setHourPrice(activity.getHourPrice());
         existingActivity.setName(activity.getName());
         existingActivity.setMinAge(activity.getMinAge());
         existingActivity.setDescription(activity.getDescription());
         return repository.save(existingActivity);
     }
+
+    public Activity updateAc(Long id, Activity newActivity){
+        Activity activity = repository.findById(id).get();
+        activity.setHourPrice(newActivity.getHourPrice());
+        activity.setName(newActivity.getName());
+        activity.setMinAge(newActivity.getMinAge());
+        activity.setDescription(newActivity.getDescription());
+        return repository.save(activity);
+    }
+
 
 
 }

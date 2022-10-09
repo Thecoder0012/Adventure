@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,15 +28,14 @@ public class Activity {
     private String name;
 
     @Column(name = "MIN_AGE")
+    @Min(value = 12,message = "Age cannot be less than 12")
     private int minAge;
 
     @Column(name = "DESC")
     private String description;
 
 
-    @ManyToMany(cascade = {
-            CascadeType.MERGE
-    })
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(name = "activity_booking",
             joinColumns = @JoinColumn(name = "activity_id"),
             inverseJoinColumns = @JoinColumn(name = "booking_id")
