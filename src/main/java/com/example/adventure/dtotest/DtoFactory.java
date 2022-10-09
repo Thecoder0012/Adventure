@@ -39,7 +39,7 @@ public class DtoFactory {
         dto.setTimeEnd(booking.getTimeEnd());
         dto.setTimeStart(booking.getTimeStart());
         dto.setCustomerDto(fromCustomer(booking.getCustomer()));
-        dto.setActivityDto(fromActivity(booking.getActivity()));
+        //dto.setActivityDto(fromActivity(booking.getActivity()));
         return dto;
     }
 

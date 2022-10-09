@@ -12,4 +12,5 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
             "INNER JOIN ",nativeQuery = true)
     void deleteActivity();
 
+
 }
