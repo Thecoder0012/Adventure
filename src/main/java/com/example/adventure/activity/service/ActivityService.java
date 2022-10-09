@@ -41,10 +41,11 @@ public class ActivityService {
         return null;
     }
     */
-    public String deleteActivity(Long id){
-         repository.deleteById(id);
-         return "Activity removed" + id;
-    }
+      public Activity deleteActivity(Long id){
+          repository.deleteById(id);
+          return null;
+      }
+
 
     public Activity updateActivity(Long id, Activity activity){
         Activity existingActivity = repository.findById(id).orElse(null);
