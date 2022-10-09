@@ -82,9 +82,6 @@ public class ActivityController {
         return ResponseEntity.badRequest().build();
     }
 
-
-
-
     @PatchMapping("/update/{id}")
     public ResponseEntity<Activity> updateActivity(@PathVariable(value = "id") Long id, @RequestBody Activity activity) {
         return ResponseEntity.ok().body(activityService.updateAc(id,activity));

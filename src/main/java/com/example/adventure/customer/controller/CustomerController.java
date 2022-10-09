@@ -48,9 +48,12 @@ public class CustomerController {
                 new RuntimeException("Not found")));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Customer> delete(@PathVariable("id") Long id){
-        return ResponseEntity.ok().body(service.delete(id));
+        if(id != null){
+            return ResponseEntity.ok().body(service.delete(id));
+        }
+        return ResponseEntity.badRequest().build();
     }
 
 }

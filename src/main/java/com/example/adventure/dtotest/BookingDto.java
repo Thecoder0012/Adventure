@@ -1,7 +1,5 @@
 package com.example.adventure.dtotest;
 
-import com.example.adventure.activity.model.Activity;
-import com.example.adventure.customer.model.Customer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

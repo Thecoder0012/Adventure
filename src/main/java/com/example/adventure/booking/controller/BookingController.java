@@ -1,5 +1,6 @@
 package com.example.adventure.booking.controller;
 
+import com.example.adventure.activity.model.Activity;
 import com.example.adventure.booking.service.BookingService;
 import com.example.adventure.booking.model.Booking;
 import com.example.adventure.dtotest.ActivityDto;
@@ -19,11 +20,11 @@ public class BookingController {
 
     private final BookingService service;
 
-    @GetMapping("/get-all")
+    @GetMapping
     public ResponseEntity<List<BookingDto>> getAll(){
         return ResponseEntity.ok().body(DtoFactory.fromBookings(service.getAll()));
     }
-    @PostMapping("/create-new")
+    @PostMapping("/add")
     public Booking addBooking(@RequestBody Booking booking){
         return service.saveBooking(booking);
     }
@@ -33,9 +34,12 @@ public class BookingController {
         return ResponseEntity.ok().body(DtoFactory.fromBooking(service.getBookingById(id)));
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteBooking(@PathVariable Long id){
-        return service.deleteBooking(id);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Booking> deleteBooking(@PathVariable("id") Long id) {
+        if (id != null) {
+            return ResponseEntity.ok().body(service.deleteBooking(id));
+        }
+        return ResponseEntity.badRequest().build();
     }
 
 

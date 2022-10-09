@@ -4,6 +4,8 @@ import com.example.adventure.activity.model.Activity;
 import com.example.adventure.customer.model.Customer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,10 +30,13 @@ public class Booking {
     @Column(name = "TIMEEND")
     private LocalTime timeEnd;
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "activity_id")
     Activity activity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "customer_id")
     Customer customer;
 
     public Booking(LocalDate localDate, LocalTime timeStart, LocalTime timeEnd){
@@ -40,7 +45,7 @@ public class Booking {
         this.timeEnd = timeEnd;
     }
 
-    public Booking(LocalDate localDate, LocalTime timeStart, LocalTime timeEnd, Activity activity, Customer customer) {
+    public Booking(LocalDate localDate, LocalTime timeStart, LocalTime timeEnd, Activity activity,Customer customer) {
         this(localDate, timeStart, timeEnd);
         this.activity = activity;
         this.customer = customer;

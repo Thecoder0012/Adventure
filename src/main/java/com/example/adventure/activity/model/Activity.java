@@ -4,13 +4,15 @@ import com.example.adventure.booking.model.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "ACTIVITY")
@@ -21,27 +23,21 @@ public class Activity {
     private long id;
 
     @Column(name = "HOURLY_RATE")
-    private double hourPrice;
+    private Double hourPrice;
 
     @Column(name = "NAME")
     private String name;
 
     @Column(name = "MIN_AGE")
     @Min(value = 12,message = "Age cannot be less than 12")
-    private int minAge;
+    private Integer minAge;
 
     @Column(name = "DESC")
     private String description;
 
-
-    @ManyToMany(cascade = {CascadeType.MERGE})
-    @JoinTable(name = "activity_booking",
-            joinColumns = @JoinColumn(name = "activity_id"),
-            inverseJoinColumns = @JoinColumn(name = "booking_id")
-    )
-
+    @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL,orphanRemoval = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Booking> bookings = new ArrayList<>();
-
 
     public Activity(double hourPrice, String name, int minAge, String description) {
         this.hourPrice = hourPrice;

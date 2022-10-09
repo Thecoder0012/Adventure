@@ -25,9 +25,9 @@ public class BookingService {
         return repository.findById(id).orElse(null);
     }
 
-    public String deleteBooking(Long id){
+    public Booking deleteBooking(Long id){
         repository.deleteById(id);
-        return "Booking removed - ID : " + id;
+        return null;
     }
 
     public Booking updateBooking(Long id, Booking booking){

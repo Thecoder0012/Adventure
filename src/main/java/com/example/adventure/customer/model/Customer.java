@@ -4,6 +4,8 @@ import com.example.adventure.booking.model.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,14 +29,12 @@ public class Customer {
 
     private String phoneNumber;
 
-    @ManyToMany(cascade = {
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "customer_booking",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "booking_id")
-    )
+
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL,orphanRemoval = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Booking> bookings = new ArrayList<>();
+
 
     public Customer(String firstName, String lastName, String email, String phoneNumber) {
         this.firstName = firstName;
@@ -42,13 +42,5 @@ public class Customer {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
-
-/*    public Customer updateFrom(Customer customer, boolean partial){
-        if(!partial || customer.firstName!=null) {this.firstName = customer.firstName;}
-        if (!partial || customer.lastName!=null) {this.lastName = customer.lastName;}
-        if (!partial || customer.email!=null) {this.email = customer.email;}
-        if (!partial || customer.phoneNumber!=null) {this.phoneNumber = customer.phoneNumber;}
-        return this;
-    }*/
 
 }
