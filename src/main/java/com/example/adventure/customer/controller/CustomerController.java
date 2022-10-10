@@ -29,19 +29,19 @@ public class CustomerController {
         return ResponseEntity.ok().body(DtoFactory.fromCustomer(service.fetchAll()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<CustomerDto> getActivityById(@PathVariable Long id) {
         return ResponseEntity.ok().body(DtoFactory.fromCustomer(service.getCustomerById(id)));
     }
 
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer){
         service.add(customer);
         return ResponseEntity.ok().body(customer);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/id/{id}")
     public ResponseEntity<Customer> patch(@PathVariable("id") Long id,
                                           @Valid @RequestBody  Customer customer){
         return ResponseEntity.ok().body(service.update(id, customer, true).orElseThrow(()->

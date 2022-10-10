@@ -58,6 +58,7 @@ public class AdventureApplication {
             bookings.add(new Booking(LocalDate.of(2020, 5, 5), LocalTime.of(12,0), LocalTime.of(16, 0),
                     activities.get(0), employees.get(0)));
             bookings.add(new Booking(LocalDate.of(2021, 3, 18), LocalTime.of(15,0), LocalTime.of(2, 0),
+                    activities.get(1), employees.get(1)));bookings.add(new Booking(LocalDate.of(2021, 3, 18), LocalTime.of(15,0), LocalTime.of(2, 0),
                     activities.get(1), employees.get(1)));
             bookingRepository.saveAll(bookings);
 
@@ -68,6 +69,7 @@ public class AdventureApplication {
 
 
             Customer customerBooking = employees.get(0);
+            Customer customerBooking1 = employees.get(0);
             customerBooking.getBookings().add(bookings.get(0));
 
             employeeRepository.save(customerBooking);

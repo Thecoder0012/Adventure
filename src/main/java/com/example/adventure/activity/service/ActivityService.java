@@ -29,7 +29,7 @@ public class ActivityService {
     }
 
     public Activity getActivityByName(String name){
-        return repository.findByName(name);
+        return repository.findByName(name.toLowerCase());
     }
 
     public Optional<Activity> find(Long id){

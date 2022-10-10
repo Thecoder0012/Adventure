@@ -20,7 +20,7 @@ public class BookingController {
 
     private final BookingService service;
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<BookingDto>> getAll(){
         return ResponseEntity.ok().body(DtoFactory.fromBookings(service.getAll()));
     }
@@ -29,7 +29,7 @@ public class BookingController {
         return service.saveBooking(booking);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("id/{id}")
     public ResponseEntity<BookingDto> getActivityById(@PathVariable Long id) {
         return ResponseEntity.ok().body(DtoFactory.fromBooking(service.getBookingById(id)));
     }

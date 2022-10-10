@@ -27,7 +27,7 @@ public class ActivityController {
      * @return ActivityDto list
      * @link <a href="http://localhost:8080/api/v1/activity">...</a>
      */
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<ActivityDto>> findAll() {
         if (activityService.getAll() != null) {
             return ResponseEntity.ok().body(DtoFactory.fromActivities(activityService.getAll()));
