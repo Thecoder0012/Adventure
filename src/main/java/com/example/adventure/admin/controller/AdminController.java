@@ -23,5 +23,7 @@ public class AdminController {
     public ResponseEntity<List<Booking>> fetchAll(){
         return ResponseEntity.ok().body(bookingService.getAll());
     }
+
+
 }
 
