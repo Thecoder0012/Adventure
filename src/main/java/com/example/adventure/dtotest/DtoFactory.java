@@ -30,6 +30,16 @@ public class DtoFactory {
                 .collect(Collectors.toList());
     }
 
+    public static Activity fromActivityDto(ActivityDto dto){
+        Activity activity = new Activity();
+        activity.setId(dto.getId());
+        activity.setName(dto.getName());
+        activity.setDescription(dto.getDescription());
+        activity.setHourPrice(dto.getHourPrice());
+        activity.setMinAge(dto.getMinAge());
+        return activity;
+    }
+
 
     // For booking
     public static BookingDto fromBooking(Booking booking) {
@@ -48,6 +58,17 @@ public class DtoFactory {
                 .collect(Collectors.toList());
     }
 
+    public static Booking fromBookingDto(BookingDto dto) {
+        Booking booking = new Booking();
+        booking.setId(dto.getId());
+        booking.setLocalDate(dto.getLocalDate());
+        booking.setTimeStart(dto.getTimeStart());
+        booking.setTimeEnd(dto.getTimeEnd());
+        booking.setActivity(fromActivityDto(dto.getActivityDto()));
+        booking.setCustomer(fromCustomerDto(dto.getCustomerDto()));
+        return booking;
+    }
+
     // For Customer
     public static CustomerDto fromCustomer(Customer customer){
         CustomerDto dto = new CustomerDto();
@@ -62,6 +83,15 @@ public class DtoFactory {
     public static List<CustomerDto> fromCustomer(List<Customer> customers){
         return customers.stream().map(obj -> fromCustomer(obj))
                 .collect(Collectors.toList());
+    }
+
+    public static Customer fromCustomerDto(CustomerDto dto){
+        Customer customer = new Customer();
+        customer.setId(dto.getId());
+        customer.setFirstName(dto.getFirstName());
+        customer.setLastName(dto.getLastName());
+        customer.setEmail(dto.getEmail());
+        return customer;
     }
 
 

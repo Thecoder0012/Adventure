@@ -46,4 +46,12 @@ public class Activity {
         this.description = description;
     }
 
+    public Activity updateWith(Activity activity){
+        this.hourPrice = activity.hourPrice;
+        this.name = activity.name;
+        this.minAge = activity.minAge;
+        this.description = activity.description;
+        return this;
+    }
+
 }

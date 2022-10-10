@@ -59,6 +59,13 @@ public class ActivityService {
         return repository.save(activity);
     }
 
+    public Optional<Activity> update(Long id, Activity activity){
+        return repository.findById(id)
+                .map(oldItem -> {
+                    return repository.save(oldItem.updateWith(activity));
+                });
+    }
+
 
 
 }

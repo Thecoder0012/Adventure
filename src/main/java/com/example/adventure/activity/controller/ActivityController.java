@@ -7,11 +7,13 @@ import com.example.adventure.dtotest.ActivityDto;
 import com.example.adventure.dtotest.DtoFactory;
 import lombok.AllArgsConstructor;
 
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -86,4 +88,18 @@ public class ActivityController {
     public ResponseEntity<Activity> updateActivity(@PathVariable(value = "id") Long id, @RequestBody Activity activity) {
         return ResponseEntity.ok().body(activityService.updateAc(id,activity));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ActivityDto> put(@PathVariable("id") Long id, @Valid @RequestBody ActivityDto dto) {
+        return ResponseEntity.ok().body(update(id, dto));
+    }
+
+    private ActivityDto update(Long id, ActivityDto dto) {
+        Optional<Activity> item = activityService.update(id, DtoFactory.fromActivityDto(dto));
+        if(!item.isPresent()) {
+            throw new ResourceNotFoundException("Activity %d not found".formatted(id));
+        }
+        return DtoFactory.fromActivity(item.get());
+    }
+
 }

@@ -51,6 +51,15 @@ public class Booking {
         this.customer = customer;
     }
 
+    public Booking updateWith(Booking booking) {
+        this.localDate = booking.localDate;
+        this.timeStart = booking.timeStart;
+        this.timeEnd = booking.timeEnd;
+        this.activity = booking.activity;
+        this.customer = booking.customer;
+        return this;
+    }
+
 
 
 

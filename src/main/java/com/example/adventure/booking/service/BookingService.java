@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -40,6 +41,12 @@ public class BookingService {
         return repository.save(bookingRequest);
     }
 
+    public Optional<Booking> update(Long id, Booking reservation) {
+        return repository.findById(id)
+                .map(oldItem -> {
+                    return repository.save(oldItem.updateWith(reservation));
+                });
+    }
 
 
 }
