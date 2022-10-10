@@ -37,6 +37,8 @@ public class ActivityController {
         return ResponseEntity.badRequest().build();
     }
 
+
+
     /**
      * Create a new activity returned as an activityDto.
      * @param activity
@@ -83,10 +85,10 @@ public class ActivityController {
         }
         return ResponseEntity.badRequest().build();
     }
-
+//Virker ikke
     @PatchMapping("/update/{id}")
     public ResponseEntity<Activity> updateActivity(@PathVariable(value = "id") Long id, @RequestBody Activity activity) {
-        return ResponseEntity.ok().body(activityService.updateAc(id,activity));
+        return ResponseEntity.ok().body(activityService.updateActivity(id,activity));
     }
 
     @PutMapping("/{id}")

@@ -56,6 +56,7 @@ public class ActivityService {
         activity.setName(newActivity.getName());
         activity.setMinAge(newActivity.getMinAge());
         activity.setDescription(newActivity.getDescription());
+
         return repository.save(activity);
     }
 

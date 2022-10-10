@@ -36,7 +36,7 @@ public class CustomerService {
         return customerRepo.findById(id).orElse(null);
     }
 
-    public Optional<Customer> update(Long id, Customer customer, boolean partial){
+    public Optional<Customer> update(Long id, Customer customer){
         return customerRepo.findById(id).map(oldItem -> {
             return customerRepo.save(customer);});
     }

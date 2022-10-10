@@ -91,6 +91,7 @@ public class DtoFactory {
         customer.setFirstName(dto.getFirstName());
         customer.setLastName(dto.getLastName());
         customer.setEmail(dto.getEmail());
+        customer.setPhoneNumber(dto.getPhoneNumber());
         return customer;
     }
 
