@@ -1,6 +1,7 @@
 package com.example.adventure.activity.model;
 
 import com.example.adventure.booking.model.Booking;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,7 +37,7 @@ public class Activity {
     private String description;
 
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL,orphanRemoval = true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Booking> bookings = new ArrayList<>();
 
     public Activity(double hourPrice, String name, int minAge, String description) {

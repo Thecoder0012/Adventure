@@ -2,6 +2,8 @@ package com.example.adventure.activity.service;
 
 import com.example.adventure.activity.model.Activity;
 import com.example.adventure.activity.repository.ActivityRepository;
+import com.example.adventure.dtotest.ActivityDto;
+import com.example.adventure.dtotest.DtoFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -65,6 +67,11 @@ public class ActivityService {
                 .map(oldItem -> {
                     return repository.save(oldItem.updateWith(activity));
                 });
+    }
+
+    public ActivityDto updateDto(Long id, ActivityDto dto) {
+        Optional<Activity> item = update(id, DtoFactory.fromActivityDto(dto));
+        return DtoFactory.fromActivity(item.get());
     }
 
 
