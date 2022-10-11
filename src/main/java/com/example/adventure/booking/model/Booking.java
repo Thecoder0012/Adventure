@@ -46,7 +46,9 @@ public class Booking {
     }
 
     public Booking(LocalDate localDate, LocalTime timeStart, LocalTime timeEnd, Activity activity,Customer customer) {
-        this(localDate, timeStart, timeEnd);
+        this.localDate = localDate;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
         this.activity = activity;
         this.customer = customer;
     }

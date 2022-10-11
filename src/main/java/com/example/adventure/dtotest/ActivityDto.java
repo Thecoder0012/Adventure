@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class ActivityDto {
     private Long id;
-    @JsonProperty("hour-price")
+//    @JsonProperty("hour-price")
     private double hourPrice;
     private String name;
-    @JsonProperty("minimum-age")
+//    @JsonProperty("minimum-age")
     private int minAge;
     private String description;
 }

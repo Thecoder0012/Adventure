@@ -14,7 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@AllArgsConstructor
 public class Customer {
 
     @Id
@@ -29,10 +28,7 @@ public class Customer {
 
     private String phoneNumber;
 
-
-
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL,orphanRemoval = true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Booking> bookings = new ArrayList<>();
 
 

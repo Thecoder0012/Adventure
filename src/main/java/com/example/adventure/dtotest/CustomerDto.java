@@ -11,12 +11,12 @@ import java.util.List;
 @Data
 public class CustomerDto implements Serializable {
     private Long id;
-    @JsonProperty("first_name")
+//    @JsonProperty("first_name")
     private String firstName;
-    @JsonProperty("last_name")
+//    @JsonProperty("last_name")
     private String lastName;
     private String email;
-    @JsonProperty("phone_number")
+//    @JsonProperty("phone_number")
     private String phoneNumber;
 
 }

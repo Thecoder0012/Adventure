@@ -21,7 +21,7 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "HOURLY_RATE")
     private Double hourPrice;
@@ -37,7 +37,6 @@ public class Activity {
     private String description;
 
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL,orphanRemoval = true)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Booking> bookings = new ArrayList<>();
 
     public Activity(double hourPrice, String name, int minAge, String description) {

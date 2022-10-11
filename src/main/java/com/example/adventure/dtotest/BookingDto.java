@@ -12,14 +12,14 @@ import java.time.LocalTime;
 @Data
 public class BookingDto implements Serializable {
     private Long id;
-    @JsonProperty("booking_date")
+//    @JsonProperty("booking_date")
     private LocalDate localDate;
-    @JsonProperty("booking_time_from")
+//    @JsonProperty("booking_time_from")
     private LocalTime timeStart;
-    @JsonProperty("booking_time_to")
+//    @JsonProperty("booking_time_to")
     private LocalTime timeEnd;
-    @JsonProperty("activity")
+//    @JsonProperty("activity")
     private ActivityDto activityDto;
-    @JsonProperty("customer")
+//    @JsonProperty("customer")
     private CustomerDto customerDto;
 }
