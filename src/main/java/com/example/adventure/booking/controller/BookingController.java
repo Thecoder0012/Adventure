@@ -28,17 +28,17 @@ public class BookingController {
         return ResponseEntity.ok().body(DtoFactory.fromBookings(service.getAll()));
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public Booking addBooking(@RequestBody Booking booking) {
         return service.saveBooking(booking);
     }
 
-    @GetMapping("id/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<BookingDto> getActivityById(@PathVariable Long id) {
         return ResponseEntity.ok().body(DtoFactory.fromBooking(service.getBookingById(id)));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Booking> deleteBooking(@PathVariable("id") Long id) {
         if (id != null) {
             return ResponseEntity.ok().body(service.deleteBooking(id));
