@@ -27,18 +27,18 @@ public class CustomerController {
 
     private final CustomerService service;
 
-    @GetMapping("/get")
+    @GetMapping
     public ResponseEntity<List<CustomerDto>> findAll() {
         return ResponseEntity.ok().body(DtoFactory.fromCustomer(service.fetchAll()));
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CustomerDto> getActivityById(@PathVariable Long id) {
         return ResponseEntity.ok().body(DtoFactory.fromCustomer(service.getCustomerById(id)));
     }
 
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer){
         service.add(customer);
         return ResponseEntity.ok().body(customer);
@@ -58,14 +58,14 @@ public class CustomerController {
         }
         return DtoFactory.fromCustomer(item.get());
     }
-    @PatchMapping("/id/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Customer> patch(@PathVariable("id") Long id,
                                           @Valid @RequestBody  Customer customer){
         return ResponseEntity.ok().body(service.update(id, customer).orElseThrow(()->
                 new RuntimeException("Not found")));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Customer> delete(@PathVariable("id") Long id){
         if(id != null){
             return ResponseEntity.ok().body(service.delete(id));

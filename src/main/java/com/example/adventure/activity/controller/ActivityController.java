@@ -28,7 +28,7 @@ public class ActivityController {
      * @return ActivityDto list
      * @link <a href="http://localhost:8080/api/v1/activity">...</a>
      */
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<ActivityDto>> findAll() {
         if (activityService.getAll() != null) {
             return ResponseEntity.ok().body(DtoFactory.fromActivities(activityService.getAll()));
@@ -44,7 +44,7 @@ public class ActivityController {
      * @return ActivityDto list
      * @link <a href="http://localhost:8080/api/v1/activity/">...</a>
      */
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<ActivityDto> addActivity(@Valid @RequestBody Activity activity) {
         if (activity != null) {
             return ResponseEntity.ok().body(DtoFactory.fromActivity(activityService.addActivity(activity)));
@@ -58,7 +58,7 @@ public class ActivityController {
      * @param id
      * @return Activity Dto
      */
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ActivityDto> getActivityById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.ok().body(DtoFactory.fromActivity(activityService.getActivityById(id)));
     }
@@ -76,7 +76,7 @@ public class ActivityController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Activity> delete(@PathVariable("id") Long id) {
         if (id != null) {
             activityService.find(id).orElseThrow(() -> new RuntimeException("Not found"));
@@ -84,7 +84,7 @@ public class ActivityController {
         }
         return ResponseEntity.badRequest().build();
     }
-    @PatchMapping("/update/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<ActivityDto> updateActivity(@PathVariable(value = "id") Long id, @RequestBody ActivityDto activity) {
         return ResponseEntity.ok().body(activityService.updateDto(id,activity));
     }
