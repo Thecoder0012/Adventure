@@ -47,7 +47,7 @@ public class ActivityController {
     @PostMapping("/add")
     public ResponseEntity<ActivityDto> addActivity(@Valid @RequestBody Activity activity) {
         if (activity != null) {
-            return ResponseEntity.ok().body(DtoFactory.fromActivity(activityService.saveActivity(activity)));
+            return ResponseEntity.ok().body(DtoFactory.fromActivity(activityService.addActivity(activity)));
         }
         return ResponseEntity.badRequest().build();
     }

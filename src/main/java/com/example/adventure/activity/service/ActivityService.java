@@ -21,7 +21,7 @@ public class ActivityService {
         return repository.findAll();
     }
 
-    public Activity saveActivity(Activity activity){
+    public Activity addActivity(Activity activity){
         return repository.save(activity);
     }
 
