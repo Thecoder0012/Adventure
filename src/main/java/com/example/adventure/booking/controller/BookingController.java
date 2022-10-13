@@ -40,13 +40,13 @@ public class BookingController {
 
     @GetMapping("id/{id}")
     public ResponseEntity<BookingDto> getActivityById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(DtoFactory.fromBooking(service.getBookingById(id)));
+        return ResponseEntity.ok().body(DtoFactory.fromBooking(bookingService.getBookingById(id)));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Booking> deleteBooking(@PathVariable("id") Long id) {
         if (id != null) {
-            return ResponseEntity.ok().body(service.deleteBooking(id));
+            return ResponseEntity.ok().body(bookingService.deleteBooking(id));
         }
         return ResponseEntity.badRequest().build();
     }

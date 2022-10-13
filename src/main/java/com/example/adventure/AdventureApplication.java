@@ -38,18 +38,18 @@ public class AdventureApplication {
         return (args) -> {
 
             final List<Customer> employees = new ArrayList<>();
-            employees.add(new Customer("Mo", "Stacks", "mo@mo.dk", "222"));
-            employees.add(new Customer("Bo", "Bosen", "bo@bo.dk", "222"));
-            employees.add(new Customer("Bobo", "Bobosen", "bobo@bobo.dk", "222"));
+            employees.add(new Customer("Kasper", "Jensen", "test@test.dk", "+4512345678"));
+            employees.add(new Customer("Mo", "Stacks", "test@test.dk", "+4512345678"));
+            employees.add(new Customer("Lars", "Samuelsen", "test@test.dk", "+4512345678"));
             employeeRepository.saveAll(employees);
             log.info("Employees added");
 
             log.info("Starting convertion");
             List<Activity> activities = new ArrayList<>();
-            activities.add(new Activity(20.0, "Gocart", 12, "DescTEST"));
-            activities.add(new Activity(40.0, "Minigolf", 13, "DescTEST1"));
-            activities.add(new Activity(30.0, "Paintball", 14, "DescTEST2"));
-            activities.add(new Activity(10.0, "Sumo-Wrestling", 15, "DescTEST3"));
+            activities.add(new Activity(20.0, "Gocart", 12, "Gokart"));
+            activities.add(new Activity(40.0, "Minigolf", 13, "Indendørs minigolf"));
+            activities.add(new Activity(30.0, "Paintball", 14, "Paintball"));
+            activities.add(new Activity(10.0, "Sumo-Wrestling", 15, "Sumo-wrestling"));
             activityRepository.saveAll(activities);
             log.info("Activities added");
 
@@ -58,8 +58,9 @@ public class AdventureApplication {
             bookings.add(new Booking(LocalDate.of(2020, 5, 5), LocalTime.of(12,0), LocalTime.of(16, 0),
                     activities.get(0), employees.get(0)));
             bookings.add(new Booking(LocalDate.of(2021, 3, 18), LocalTime.of(15,0), LocalTime.of(2, 0),
-                    activities.get(1), employees.get(1)));bookings.add(new Booking(LocalDate.of(2021, 3, 18), LocalTime.of(15,0), LocalTime.of(2, 0),
                     activities.get(1), employees.get(1)));
+            bookings.add(new Booking(LocalDate.of(2021, 3, 18), LocalTime.of(15,0), LocalTime.of(2, 0),
+                    activities.get(2), employees.get(2)));
             bookingRepository.saveAll(bookings);
 
             Activity activityBooking = activities.get(0);
