@@ -75,6 +75,7 @@ public class ActivityController {
         }
         return ResponseEntity.badRequest().build();
     }
+//
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Activity> delete(@PathVariable("id") Long id) {

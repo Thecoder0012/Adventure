@@ -68,7 +68,7 @@ public class AdventureApplication {
 
             activityRepository.save(activityBooking);
 
-
+//
             Customer customerBooking = employees.get(0);
             Customer customerBooking1 = employees.get(0);
             customerBooking.getBookings().add(bookings.get(0));
