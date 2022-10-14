@@ -17,7 +17,7 @@ public class CustomerService {
 
     private final CustomerRepo customerRepo;
 
-    public Customer addCustomer(Customer customer){
+    public Customer add(Customer customer){
         return customerRepo.save(customer);
     }
 

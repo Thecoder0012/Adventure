@@ -20,33 +20,33 @@ import java.util.Optional;
 @RequestMapping("/api/v1/booking")
 public class BookingController {
 
-    private final BookingService bookingService;
+    private final BookingService service;
     private final ActivityService activityService;
     private final CustomerService customerService;
 
 
     @GetMapping()
     public ResponseEntity<List<BookingDto>> getAll() {
-        return ResponseEntity.ok().body(DtoFactory.fromBookings(bookingService.getAll()));
+        return ResponseEntity.ok().body(DtoFactory.fromBookings(service.getAll()));
     }
 // comment
     @PostMapping("/add")
     public BookingDto addBooking(@RequestBody Booking booking) {
         activityService.addActivity(booking.getActivity());
-        customerService.addCustomer(booking.getCustomer());
+        customerService.add(booking.getCustomer());
 
-        return DtoFactory.fromBooking(bookingService.saveBooking(booking));
+        return DtoFactory.fromBooking(service.saveBooking(booking));
     }
 
     @GetMapping("id/{id}")
     public ResponseEntity<BookingDto> getActivityById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(DtoFactory.fromBooking(bookingService.getBookingById(id)));
+        return ResponseEntity.ok().body(DtoFactory.fromBooking(service.getBookingById(id)));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Booking> deleteBooking(@PathVariable("id") Long id) {
         if (id != null) {
-            return ResponseEntity.ok().body(bookingService.deleteBooking(id));
+            return ResponseEntity.ok().body(service.deleteBooking(id));
         }
         return ResponseEntity.badRequest().build();
     }
@@ -57,7 +57,7 @@ public class BookingController {
     }
 
     private BookingDto update(Long id, BookingDto dto) {
-        Optional<Booking> item = bookingService.update(id, DtoFactory.fromBookingDto(dto));
+        Optional<Booking> item = service.update(id, DtoFactory.fromBookingDto(dto));
         return DtoFactory.fromBooking(item.get());
     }
 }
