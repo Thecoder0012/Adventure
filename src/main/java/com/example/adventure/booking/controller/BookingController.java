@@ -1,8 +1,8 @@
 package com.example.adventure.booking.controller;
 
 import com.example.adventure.activity.service.ActivityService;
-import com.example.adventure.booking.service.BookingService;
 import com.example.adventure.booking.model.Booking;
+import com.example.adventure.booking.service.BookingService;
 import com.example.adventure.customer.service.CustomerService;
 import com.example.adventure.dtotest.BookingDto;
 import com.example.adventure.dtotest.DtoFactory;
@@ -27,9 +27,13 @@ public class BookingController {
 
     @GetMapping()
     public ResponseEntity<List<BookingDto>> getAll() {
-        return ResponseEntity.ok().body(DtoFactory.fromBookings(service.getAll()));
+        List<Booking> bookings = service.getAll();
+        if (bookings != null) {
+            return ResponseEntity.ok().body(DtoFactory.fromBookings(bookings));
+        }
+        return ResponseEntity.badRequest().build();
     }
-// comment
+
     @PostMapping("/add")
     public BookingDto addBooking(@RequestBody Booking booking) {
         activityService.addActivity(booking.getActivity());

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -30,10 +29,12 @@ public class ActivityController {
      */
     @GetMapping
     public ResponseEntity<List<ActivityDto>> findAll() {
-        if (activityService.getAll() != null) {
-            return ResponseEntity.ok().body(DtoFactory.fromActivities(activityService.getAll()));
+        List<Activity> activities = activityService.getAll();
+        if (activities != null) {
+            return ResponseEntity.ok().body(DtoFactory.fromActivities(activities));
         }
         return ResponseEntity.badRequest().build();
+
     }
 
 
@@ -75,7 +76,7 @@ public class ActivityController {
         }
         return ResponseEntity.badRequest().build();
     }
-//
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Activity> delete(@PathVariable("id") Long id) {
