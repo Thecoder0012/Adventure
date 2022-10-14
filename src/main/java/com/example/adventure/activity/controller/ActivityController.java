@@ -16,7 +16,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin
 @RequestMapping("/api/v1/activity")
 public class ActivityController {
 

@@ -41,6 +41,7 @@ public class AdventureApplication {
             employees.add(new Customer("Kasper", "Jensen", "test@test.dk", "+4512345678"));
             employees.add(new Customer("Mo", "Stacks", "test@test.dk", "+4512345678"));
             employees.add(new Customer("Lars", "Samuelsen", "test@test.dk", "+4512345678"));
+            employees.add(new Customer("Jens", "Petersen", "test@test.dk", "+4512345678"));
             customerRepo.saveAll(employees);
             log.info("Employees added");
 

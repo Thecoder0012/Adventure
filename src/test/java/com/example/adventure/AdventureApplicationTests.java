@@ -1,13 +1,13 @@
-package com.example.adventure;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class AdventureApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//package com.example.adventure;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class AdventureApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}
