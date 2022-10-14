@@ -32,7 +32,7 @@ public class AdventureApplication {
     }
 
     @Bean
-    public CommandLineRunner importData(CustomerRepo employeeRepository,
+    public CommandLineRunner commandLineRunner(CustomerRepo customerRepo,
                                         ActivityRepository activityRepository,
                                         BookingRepository bookingRepository) {
         return (args) -> {
@@ -41,7 +41,7 @@ public class AdventureApplication {
             employees.add(new Customer("Kasper", "Jensen", "test@test.dk", "+4512345678"));
             employees.add(new Customer("Mo", "Stacks", "test@test.dk", "+4512345678"));
             employees.add(new Customer("Lars", "Samuelsen", "test@test.dk", "+4512345678"));
-            employeeRepository.saveAll(employees);
+            customerRepo.saveAll(employees);
             log.info("Employees added");
 
             log.info("Starting convertion");
@@ -63,25 +63,8 @@ public class AdventureApplication {
                     activities.get(2), employees.get(2)));
             bookingRepository.saveAll(bookings);
 
-            Activity activityBooking = activities.get(0);
-            activityBooking.getBookings().add(bookings.get(0));
-
-            activityRepository.save(activityBooking);
-
-//
-            Customer customerBooking = employees.get(0);
-            Customer customerBooking1 = employees.get(0);
-            customerBooking.getBookings().add(bookings.get(0));
-
-            employeeRepository.save(customerBooking);
-
-
-
-
-
-
-            log.info("Data import done.");
-
+            log.info("Data sent to database");
+            log.warn("This is only for testing");
 
         };
     }
